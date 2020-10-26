@@ -6,12 +6,12 @@ int main()
   std::cout << std::endl;
   std::cout << "Enter the correct code to continue...";
 
-  int a = 5;
-  int b = 10;
-  int c = 20;
+  const int a = 5;
+  const int b = 10;
+  const int c = 20;
 
-  int sum = a + b + c;
-  int product = a * b * c;
+  const int sum = a + b + c;
+  const int product = a * b * c;
 
   std::cout << std::endl;
   std::cout << sum << std::endl;
