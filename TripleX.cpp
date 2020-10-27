@@ -3,7 +3,7 @@
 void PrintIntroduction(int Difficulty)
 {
   // Print welcome messages to the terminal
-  std::cout << "\n\nYou are a secret agent breaking into a level " << Difficulty << " secure server room\n";
+  std::cout << "\nYou are a secret agent breaking into a level " << Difficulty << " secure server room\n";
   std::cout << "Enter the correct code to continue...\n\n";
 }
 
@@ -12,9 +12,9 @@ bool PlayGame(int Difficulty)
   PrintIntroduction(Difficulty);
 
   // Declare 3 number code
-  const int CodeA = 5;
-  const int CodeB = 10;
-  const int CodeC = 20;
+  const int CodeA = rand();
+  const int CodeB = rand();
+  const int CodeC = rand();
 
   /*
     Declare the sum and the product
@@ -39,12 +39,12 @@ bool PlayGame(int Difficulty)
   // Check if the player's guess is correct
   if (GuessSum == GuessProduct && GuessProduct == CodeProduct)
   {
-    std::cout << "You win!\n";
+    std::cout << "\n*** Well done agent! You have extracted a file! Keep Going! ***\n";
     return true;
   }
   else
   {
-    std::cout << "You lose!\n";
+    std::cout << "\n*** You entered the wrong code! Careful agent! Try again! ***\n";
     return false;
   }
 }
@@ -52,17 +52,24 @@ bool PlayGame(int Difficulty)
 int main()
 {
   int LevelDifficulty = 1;
-  while (true)
+  const int MaxDifficulty = 5;
+
+  while (LevelDifficulty <= MaxDifficulty) // loop the game until all levels are complete
   {
     bool bLevelComplete = PlayGame(LevelDifficulty);
-    std::cin.clear();
-    std::cin.ignore();
+    std::cin.clear();  // Clears any errors
+    std::cin.ignore(); // Discards the buffer
 
     if (bLevelComplete)
     {
       // Increase the level difficulty
       ++LevelDifficulty;
     }
+  }
+
+  if (LevelDifficulty > MaxDifficulty)
+  {
+    std::cout << "*** Great work agent! You got all the files! Now get out of there! ***\n";
   }
 
   return 0;
