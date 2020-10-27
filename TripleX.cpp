@@ -1,11 +1,15 @@
 #include <iostream>
 
-int main()
+void PrintIntroduction()
 {
   // Print welcome messages to the terminal
-  std::cout << "You are a secret agent breaking into a secure server room";
-  std::cout << std::endl;
-  std::cout << "Enter the correct code to continue...";
+  std::cout << "You are a secret agent breaking into a secure server room\n";
+  std::cout << "Enter the correct code to continue...\n\n";
+}
+
+void PlayGame()
+{
+  PrintIntroduction();
 
   // Declare 3 number code
   const int CodeA = 5;
@@ -20,29 +24,31 @@ int main()
   const int CodeProduct = CodeA * CodeB * CodeC;
 
   // Print sum and product to the terminal
-  std::cout << std::endl
-            << std::endl;
-  std::cout << "+ There are 3 numbers in the code" << std::endl;
-  std::cout << "+ The codes add-up to: " << CodeSum << std::endl;
-  std::cout << "+ The codes multiply to give: " << CodeProduct << std::endl;
+  std::cout << "+ There are 3 numbers in the code\n";
+  std::cout << "+ The codes add-up to: " << CodeSum << "\n";
+  std::cout << "+ The codes multiply to give: " << CodeProduct << "\n";
 
+  // Store player guess
   int GuessA, GuessB, GuessC;
   std::cout << "Type in your guess: ";
-  std::cin >> GuessA;
-  std::cin >> GuessB;
-  std::cin >> GuessC;
+  std::cin >> GuessA >> GuessB >> GuessC;
 
   const int GuessSum = GuessA + GuessB + GuessC;
   const int GuessProduct = GuessA * GuessB * GuessC;
 
+  // Check if the player's guess is correct
   if (GuessSum == GuessProduct && GuessProduct == CodeProduct)
   {
-    std::cout << "You win!" << std::endl;
+    std::cout << "You win!\n";
   }
   else
   {
-    std::cout << "You lose!" << std::endl;
+    std::cout << "You lose!\n";
   }
+}
 
+int main()
+{
+  PlayGame();
   return 0;
 }
